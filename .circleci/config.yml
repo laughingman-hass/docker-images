@@ -3,9 +3,9 @@ jobs:
   build:
     machine: true
     environment:
-      IMAGENAME: ${DOCKER_USER}/mkvtoolnix
+      IMAGENAME: hassank/mkvtoolnix
     steps:
       - checkout
-      - run: echo "${DOCKER_PASS}" | docker login --username ${DOCKER_USER} --password-stdin
+      - run: echo "${DOCKER_PASS}" | docker login --username hassank --password-stdin
       - run: docker build -t ${IMAGENAME}:latest mkvtoolnix
       - run: docker push ${IMAGENAME}:latest
