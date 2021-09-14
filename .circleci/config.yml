@@ -7,6 +7,7 @@ jobs:
     steps:
       - checkout
       - run: echo "${DOCKER_PASS}" | docker login --username hassank --password-stdin
-      - run: export VERSION=$(cat mkvtoolnix/.version)
-      - run: docker build --tag ${IMAGENAME}:latest --tag ${IMAGENAME}:${VERSION} --file mkvtoolnix/Dockerfile --build-arg VERSION=${VERSION}
+      - run: |
+          export VERSION=$(cat mkvtoolnix/.version)
+          docker build --tag ${IMAGENAME}:latest --tag ${IMAGENAME}:${VERSION} --file mkvtoolnix/Dockerfile --build-arg VERSION=${VERSION}
       - run: docker image push --all-tags ${IMAGENAME}
