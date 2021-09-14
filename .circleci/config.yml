@@ -13,4 +13,4 @@ jobs:
       - run: |
           export VERSION=$(cat mkvtoolnix/.version)
           docker push ${IMAGENAME}:latest
-          docker push ${IMAGENAME}:${VERSIONj}
+          docker push ${IMAGENAME}:${VERSION}
