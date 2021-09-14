@@ -1,0 +1,11 @@
+version: 2.1
+jobs:
+  build:
+    machine: true
+    environment:
+      IMAGENAME: $DOCKER_USER/mkvtoolnix
+    steps:
+      - checkout
+      - run: echo "${DOCKER_PASS}" | docker login --username ${DOCKER_USER} --password-stdin
+      - run: docker build -t ${IMAGENAME}:latest mkvtoolnix
+      - run: docker push ${IMAGENAME}:latest
