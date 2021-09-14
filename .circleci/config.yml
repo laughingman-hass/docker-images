@@ -3,7 +3,7 @@ jobs:
   build:
     machine: true
     environment:
-      IMAGENAME: $DOCKER_USER/mkvtoolnix
+      IMAGENAME: ${DOCKER_USER}/mkvtoolnix
     steps:
       - checkout
       - run: echo "${DOCKER_PASS}" | docker login --username ${DOCKER_USER} --password-stdin
