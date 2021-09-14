@@ -4,12 +4,13 @@ jobs:
     machine: true
     environment:
       IMAGENAME: hassank/mkvtoolnix
-      VERSION: $(cat mkvtoolnix/.version)
     steps:
       - checkout
       - run: echo "${DOCKER_PASS}" | docker login --username hassank --password-stdin
       - run: |
+          export VERSION=$(cat mkvtoolnix/.version)
           docker build --tag ${IMAGENAME}:latest --tag ${IMAGENAME}:${VERSION} --file mkvtoolnix/Dockerfile --build-arg VERSION=${VERSION} .
       - run: |
+          export VERSION=$(cat mkvtoolnix/.version)
           docker push ${IMAGENAME}:latest
           docker push ${IMAGENAME}:${VERSIONj}
