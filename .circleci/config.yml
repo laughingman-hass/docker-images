@@ -10,4 +10,4 @@ jobs:
       - run: |
           export VERSION=$(cat mkvtoolnix/.version)
           docker build --tag ${IMAGENAME}:latest --tag ${IMAGENAME}:${VERSION} --file mkvtoolnix/Dockerfile --build-arg VERSION=${VERSION} .
-      - run: docker image push --all-tags ${IMAGENAME}
+      - run: docker push ${IMAGENAME} --all-tags
