@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build-mkvtoolnix:
+  mkvtoolnix:
     machine: true
     environment:
       IMAGENAME: hassank/mkvtoolnix
@@ -14,3 +14,8 @@ jobs:
           export VERSION=$(cat mkvtoolnix/.version)
           docker push ${IMAGENAME}:latest
           docker push ${IMAGENAME}:${VERSION}
+
+workflows:
+  build:
+    jobs:
+      - mkvtoolnix
